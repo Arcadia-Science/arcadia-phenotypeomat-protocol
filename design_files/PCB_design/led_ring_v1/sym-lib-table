@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "led_ring_library")(type "KiCad")(uri "${KIPRJMOD}/led_ring_library.kicad_sym")(options "")(descr ""))
+)
