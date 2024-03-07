@@ -1,4 +1,8 @@
-//A simple system for passing variable values to and from the arduino
+//A simple system for passing variable values to and from the arduino.
+//The function serialEvent watches the serial connection for for ascii characters
+//and adds those characters to a buffer.  When it recieves a semicolon it considers
+//the buffer to contain a command. It can handle the commands GET and SET to allow 
+//passing variables from the computer to the arduino
 
 void serialEvent() {
   // concatinate incoming characters from the serial port  
