@@ -42,5 +42,3 @@ void parseCommand(char* command) {
   GET_AND_SET(LED_670_STATUS);
   GET_AND_SET(LED_TRANS_STATUS);
 }
-
-  
