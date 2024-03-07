@@ -1,4 +1,4 @@
-"""This is a set of tool for acquiring images from blackfly cameras.  It uses the
+"""This is a set of tools for acquiring images from blackfly cameras.  It uses the
  the spinnaker 2.3 SDK and python 3.9.
 Dave Mets 10_5_22"""
 
