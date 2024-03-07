@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/Arcadia-Science/arcadia-phenotypeomat"
+"Homepage" = "https://github.com/Arcadia-Science/arcadia-phenotypeomat-protocol"
 "Bug Tracker" = "https://github.com/Arcadia-Science/arcadia-phenotypeomat/issues"
