@@ -11,9 +11,9 @@ to grow ("grow lights"), then acquires an image using transillumination once an 
 for 48 hours"""
 
 
-# establish serial communication with microcontroller. 
+# establish serial communication with microcontroller.
 # expects only one phenotype-o-mat attached to the computer
-dev = ser.Serial("/dev/ttyACM0")  
+dev = ser.Serial("/dev/ttyACM0")
 
 dev.write(b"SET LED_TRANS_STATUS 1;")  # turn off the LED
 
