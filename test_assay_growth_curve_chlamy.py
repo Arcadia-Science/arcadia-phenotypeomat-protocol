@@ -10,7 +10,7 @@ allows the use of a barcode reader, turns on the LEDs that are useful for Chlamy
 to grow ("grow lights"), then acquires an image using transillumination once an hour
 for 48 hours"""
 
-dev = ser.Serial("/dev/ttyACM0")  # establish serial communication with microcontroller
+dev = ser.Serial("/dev/ttyACM0")  # establish serial communication with microcontroller. expects only one phenotype-o-mat attached to the computer
 
 dev.write(b"SET LED_TRANS_STATUS 1;")  # turn off the LED
 
