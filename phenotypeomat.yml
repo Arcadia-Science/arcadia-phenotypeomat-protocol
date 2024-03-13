@@ -1,0 +1,7 @@
+name: phenotypeomat
+channels:
+  - defaults
+dependencies:
+  - pyserial
+  - opencv
+

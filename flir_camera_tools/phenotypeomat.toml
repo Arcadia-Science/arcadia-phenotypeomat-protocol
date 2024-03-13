@@ -3,12 +3,15 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "low_res_phenotyping_tools"
+name = "arcadia-phenotypeomat-protocol"
 version = "0.0.1"
+dependencies = [
+"opencv >= 4.5.4", "pyserial >= 3.5", "Teledyne/Flir Spinnaker SDK >= 2.3"
+]
 authors = [
   { name="Dave Mets", email="dave.mets@arcadiascience.com" },
 ]
-description = "A set of tools for making phenotyping assays using the Arcadia phenotypeomat."
+description = "A set of tools for making phenotyping assays using the Arcadia phenotype-o-mat."
 readme = "README.md"
 requires-python = "3.9"
 classifiers = [
