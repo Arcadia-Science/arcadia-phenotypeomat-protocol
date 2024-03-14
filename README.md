@@ -98,7 +98,7 @@ Components
 [design_files/](design_files/) Contains design files for the components of the phenotype-o-mat including the printed circuit board. \
 [flir_camera_tools/](flir_camera_tools/) Contains the python module to interact with the phenotype-o-mat. \
 [firmware_src/](firmware_src/) Contains the firmware to be uploaded to the Arduino which operates the illumination system. \
-[test_assay_growth_curve_chlamy.py](test_assay_growth_curve_chlamy.py) Is an example assay for aquiring data from the phenotype-o-mat.  It uses much of the currently implemented functionality. \
+[test_assay_growth_curve_chlamy.py](test_assay_growth_curve_chlamy.py) Is an example assay for aquiring data from the phenotype-o-mat.  It uses much of the currently implemented functionality. 
 
 ### Compute Specifications
 
