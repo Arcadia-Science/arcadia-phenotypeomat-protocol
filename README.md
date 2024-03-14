@@ -52,7 +52,7 @@ Components
 
 ### Tools for writing data aquisition scripts
 #### Illumination hardware Control
-##### Currently, the Arduino code allows control of 5 illumination sources: white lite trans-illumination and incident light at 4 wavelengths: 460nm, 535nm, 590nm, and 670nm. Control of the Arduino is meddiated by a generic serial communication system to facilitate the addition of other functionality. The assay scripts communicate with the arduino through use of the [pySerial](https://pyserial.readthedocs.io/en/latest/shortintro.html) module. The Arduino sketches can be modified to add or change hardware control functionalities. Refer to the comments within each sketch for guidance on customization. The current usage is outlined below.
+ Currently, the Arduino code allows control of 5 illumination sources: white lite trans-illumination and incident light at 4 wavelengths: 460nm, 535nm, 590nm, and 670nm. Control of the Arduino is meddiated by a generic serial communication system to facilitate the addition of other functionality. The assay scripts communicate with the arduino through use of the [pySerial](https://pyserial.readthedocs.io/en/latest/shortintro.html) module. The Arduino sketches can be modified to add or change hardware control functionalities. Refer to the comments within each sketch for guidance on customization. The current usage is outlined below.
 
  After initializing a serial connection with the arduino (see example assay or pySerial documentation to accomplish this) commands can be sent in the following format:
 
