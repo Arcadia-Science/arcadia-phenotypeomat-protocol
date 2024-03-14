@@ -62,36 +62,36 @@ Components
 
 ##### Barcode Reading
 
--``` bcode_read(): Invoke this function to read barcodes using a USB handheld scanner. It prompts for a barcode scan and returns the scanned code.```
+-``` bcode_read()```: Invoke this function to read barcodes using a USB handheld scanner. It prompts for a barcode scan and returns the scanned code.
 
 ##### Camera control
 ###### Several of these functions are part of the Spinnaker SDK and we direct you to the SDK documentation for more information.  They are provided here because these are the minimum functions required to interface with the camera.  For example usage see the provded 'test_assay.'
 
-- detect_cams(n=None): Detects the number of connected cameras. Optionally, specify the number of expected cameras with n.
-- ps.System.GetInstance(): Initializes an object to interface between the computer system and the PySpin SDK.
-- system.GetCameras(): Property of a system object that queries the computer system USB and GigE interfaces for Blackfly cameras and returns handles for those cameras in a list.
-- system.ReleaseInstance(): Property of a system object that stops that instance.
-- cam_list.Clear(): Property of a camera list that ends the handlers for those cameras and returns the cameras to a idle state.
-- camera.Init(): Initializes a camera object. Camera objects can be de-initialized and returned to idle state by calling '''del camera'''
+- ```detect_cams(n=None)```: Detects the number of connected cameras. Optionally, specify the number of expected cameras with n.
+- ```ps.System.GetInstance()```: Initializes an object to interface between the computer system and the PySpin SDK.
+- ```system.GetCameras()```: Property of a system object that queries the computer system USB and GigE interfaces for Blackfly cameras and returns handles for those cameras in a list.
+- ```system.ReleaseInstance()```: Property of a system object that stops that instance.
+- ```cam_list.Clear()```: Property of a camera list that ends the handlers for those cameras and returns the cameras to a idle state.
+- ```camera.Init()```: Initializes a camera object. Camera objects can be de-initialized and returned to idle state by calling '''del camera'''
 
 ##### Image Acquisition and Processing
 
-- get_save(cam, wl, device, barcode, delay=None): Acquires an image from the camera after a specified delay and saves it. The function turns on specified illumination, captures the frame, and then turns the illumination off.
-- grab_images(cam): Captures images from the specified camera and returns them along with timestamps.
-- set_resolution(cam, x_dim, y_dim): Sets the dimensions of the acquired image. X and Y dim should be in pixels. 'cam' is a camera object.
-- set_binning(can, x_dim, y_dim): Sets the dimensions of binning. X and Y dim should be in pixels. 'cam' is a camera object.
-- set_gain_mode(cam, mode="once"): Sets the automatic gain mode of the camera.  Mode should be 'once', 'continuous', or 'off'.
-- get_gain_mode(cam): Returns the current automatic gain mode setting from the camera.
-- set_expos_mode(cam, mode="once"): Sets the automatic exposure mode of the camera.  Mode should be once, continuous, or off.
-- set_expos_time(cam, time): Sets a custom exposure time.  Expects values in micro seconds.
-- get_auto_exposure(cam): Returns the current autoexposure value determined by the camera in micro seconds.
-- set_framerate(cam, frame_rate=None): sets the framerate set on the camera. 'frame_rate' should be in hz.
-- get_framerate(cam): Returns the current framerate on the camera.
+- ```get_save(cam, wl, device, barcode, delay=None)```: Acquires an image from the camera after a specified delay and saves it. The function turns on specified illumination, captures the frame, and then turns the illumination off.
+- ```grab_images(cam)```: Captures images from the specified camera and returns them along with timestamps.
+- ```set_resolution(cam, x_dim, y_dim)```: Sets the dimensions of the acquired image. X and Y dim should be in pixels. 'cam' is a camera object.
+- ```set_binning(can, x_dim, y_dim)```: Sets the dimensions of binning. X and Y dim should be in pixels. 'cam' is a camera object.
+- ```set_gain_mode(cam, mode="once")```: Sets the automatic gain mode of the camera.  Mode should be 'once', 'continuous', or 'off'.
+- ```get_gain_mode(cam)```: Returns the current automatic gain mode setting from the camera.
+- ```set_expos_mode(cam, mode="once")```: Sets the automatic exposure mode of the camera.  Mode should be once, continuous, or off.
+- ```set_expos_time(cam, time)```: Sets a custom exposure time.  Expects values in micro seconds.
+- ```get_auto_exposure(cam)```: Returns the current autoexposure value determined by the camera in micro seconds.
+- ```set_framerate(cam, frame_rate=None)```: sets the framerate set on the camera. 'frame_rate' should be in hz.
+- ```get_framerate(cam)```: Returns the current framerate on the camera.
 
 ##### Video Saving
 
-- save_avi(images, frame_rate=None, barcode=None, prefix=None, path=None, is_color=None): Saves a sequence of images as an AVI file using OpenCV.
-- save_video(images, frame_rate=None, barcode=None, prefix=None, path=None): Saves a list of images as a video file using the Spinnaker SDK.
+- ```save_avi(images, frame_rate=None, barcode=None, prefix=None, path=None, is_color=None)```: Saves a sequence of images as an AVI file using OpenCV.
+- ```save_video(images, frame_rate=None, barcode=None, prefix=None, path=None)```: Saves a list of images as a video file using the Spinnaker SDK.
 
 ### Description of the folder structure
 
