@@ -78,7 +78,7 @@ Components
 
 - ```get_save(cam, wl, device, barcode, delay=None)```: Acquires an image from the camera after a specified delay and saves it. The function turns on specified illumination, captures the frame, and then turns the illumination off.
 - ```grab_images(cam)```: Captures images from the specified camera and returns them along with timestamps.
-- ```set_resolution(cam, x_dim, y_dim)```: Sets the dimensions of the acquired image. X and Y dim should be in pixels. 'cam' is a camera object.
+- ```set_resolution(cam, x_dim, y_dim)```: Sets the dimensions of the acquired image. X and Y dim should be in pixels. `cam` is a camera object.
 - ```set_binning(can, x_dim, y_dim)```: Sets the dimensions of binning. X and Y dim should be in pixels. 'cam' is a camera object.
 - ```set_gain_mode(cam, mode="once")```: Sets the automatic gain mode of the camera.  Mode should be 'once', 'continuous', or 'off'.
 - ```get_gain_mode(cam)```: Returns the current automatic gain mode setting from the camera.
