@@ -25,7 +25,7 @@ Components
 
 - [serial_io.ino](./firmware_src/arduino_src/serial_io.ino): Implements basic serial I/O operations for Arduino, facilitating communication between the Arduino and a connected computer.
 
-- arduino_control_through_serial.ino: An advanced sketch for controlling various Arduino outputs (e.g., LEDs, motors) through serial commands sent from a computer. This sketch is designed to work in tandem with the Python control scripts, allowing for automated hardware control during data acquisition.
+- [arduino_control_through_serial.ino](./firmware_src/arduino_src/arduino_control_through_serial.ino): An advanced sketch for controlling various Arduino outputs (e.g., LEDs, motors) through serial commands sent from a computer. This sketch is designed to work in tandem with the Python control scripts, allowing for automated hardware control during data acquisition.
 
 ### Configuration File
 
