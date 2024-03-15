@@ -80,7 +80,7 @@ Components
 - ```grab_images(cam)```: Captures images from the specified camera and returns them along with timestamps.
 - ```set_resolution(cam, x_dim, y_dim)```: Sets the dimensions of the acquired image. X and Y dim should be in pixels. `cam` is a camera object.
 - ```set_binning(can, x_dim, y_dim)```: Sets the dimensions of binning. X and Y dim should be in pixels. `cam` is a camera object.
-- ```set_gain_mode(cam, mode="once")```: Sets the automatic gain mode of the camera.  Mode should be 'once', 'continuous', or 'off'.
+- ```set_gain_mode(cam, mode="once")```: Sets the automatic gain mode of the camera.  Mode should be `once`, `continuous`, or `off`.
 - ```get_gain_mode(cam)```: Returns the current automatic gain mode setting from the camera.
 - ```set_expos_mode(cam, mode="once")```: Sets the automatic exposure mode of the camera.  Mode should be once, continuous, or off.
 - ```set_expos_time(cam, time)```: Sets a custom exposure time.  Expects values in micro seconds.
