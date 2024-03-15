@@ -33,7 +33,7 @@ Components
 
 ### Python Modules
 
-- cam_tools.py: Provides a suite of tools for acquiring images from Blackfly cameras using the Spinnaker SDK. It includes functions for barcode scanning, camera detection, image acquisition, resolution setting, and video saving.
+- [cam_tools.py](./flir_camera_tools/cam_tools.py): Provides a suite of tools for acquiring images from Blackfly cameras using the Spinnaker SDK. The script includes functions for barcode scanning, camera detection, image acquisition, resolution setting, and video saving.
 
 ### Setup
 
