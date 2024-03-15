@@ -30,7 +30,7 @@ The Phenotype-o-Mat system is an integrated solution for controlling experimenta
 
 ### Configuration File
 
--  [phenotypeomat.toml](./phenotypeomat.toml): A TOML file used to configure system parameters, such as device identifiers and operational settings. This file ensures that the system can be easily customized without modifying the source code.
+-  [phenotypeomat.toml](./flir_camera_tools/phenotypeomat.toml): A TOML file used to configure system parameters, such as device identifiers and operational settings. This file ensures that the system can be easily customized without modifying the source code.
 
 ### Python Modules
 
