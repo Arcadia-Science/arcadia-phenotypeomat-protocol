@@ -20,7 +20,8 @@ Note, you must also install the Spinnaker python wheel appropriate for your vers
 ### Phenotype-o-Mat Control and Data Acquisition System
 
 The Phenotype-o-Mat system is an integrated solution for controlling experimental hardware and acquiring data, particularly designed for use with Blackfly cameras and Arduino-based control systems. This repository includes Arduino sketches for serial communication, a TOML configuration file for system settings, and Python modules for camera control and initialization.
-Components
+
+##Components
 ### Arduino Sketches
 
 - [serial_io.ino](./firmware_src/arduino_src/serial_io.ino): Implements basic serial I/O operations for Arduino, facilitating communication between the Arduino and a connected computer.
@@ -44,6 +45,9 @@ Components
 - Python Environment: Ensure you have Python 3.9 or later installed. Install required dependencies, including OpenCV and PySpin (PySpin is part of the python wheel associated with the Spinnaker SDK), as well as any others needed by the scripts in this repository.
 
 - Running the System: Use the Python scripts to control the system. The scripts will communicate with the Arduino through serial commands and control the cameras based on the settings specified in the TOML file.
+
+### Physical components
+All 3d printable physical components of the phenotype-o-mat are available [here](https://www.shapeways.com/designer/ben_arcadia/lists/phenotype-o-mat)
 
 ### Usage
 #### Data Acquisition
@@ -107,5 +111,3 @@ Components
 ## Contributing
 
 See how we recognize [feedback and contributions to our code](https://github.com/Arcadia-Science/arcadia-software-handbook/blob/main/guides-and-standards/guide-credit-for-contributions.md).
-
-
