@@ -1,0 +1,6 @@
+name: phenotypeomat
+channels:
+  - defaults
+dependencies:
+  - pyserial=3.5
+  - opencv=4.5.4
