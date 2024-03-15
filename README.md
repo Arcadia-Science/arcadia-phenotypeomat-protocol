@@ -17,9 +17,9 @@ This code also requires the Spinnaker SDK from Flir/Teledyne. The SDK and instal
 Note, you must also install the Spinnaker python wheel appropriate for your version of Python and Spinnaker. These are also available through the link above.
 
 ## Overview
-### Phenotype-o-Mat Control and Data Acquisition System
+### Phenotype-o-mat Control and Data Acquisition System
 
-The Phenotype-o-Mat system is an integrated solution for controlling experimental hardware and acquiring data, particularly designed for use with Blackfly cameras and Arduino-based control systems. This repository includes Arduino sketches for serial communication, a TOML configuration file for system settings, and Python modules for camera control and initialization.
+The Phenotype-o-mat system is an integrated solution for controlling experimental hardware and acquiring data, particularly designed for use with Blackfly cameras and Arduino-based control systems. This repository includes Arduino sketches for serial communication, a TOML configuration file for system settings, and Python modules for camera control and initialization.
 
 ##Components
 ### Arduino Sketches
@@ -56,17 +56,17 @@ All 3d printable physical components of the phenotype-o-mat are available [here]
 
 ### Tools for writing data aquisition scripts
 #### Illumination hardware Control
- Currently, the Arduino code allows control of 5 illumination sources: white lite trans-illumination and incident light at 4 wavelengths: 460nm, 535nm, 590nm, and 670nm. Control of the Arduino is meddiated by a generic serial communication system to facilitate the addition of other functionality. The assay scripts communicate with the arduino through use of the [pySerial](https://pyserial.readthedocs.io/en/latest/shortintro.html) module. The Arduino sketches can be modified to add or change hardware control functionalities. Refer to the comments within each sketch for guidance on customization. The current usage is outlined below.
+ Currently, the Arduino code allows control of 5 illumination sources: white lite trans-illumination and incident light at 4 wavelengths: 460nm, 535nm, 590nm, and 670nm. Control of the Arduino is mediated by a generic serial communication system to facilitate the addition of other functionality. The assay scripts communicate with the arduino through use of the [pySerial](https://pyserial.readthedocs.io/en/latest/shortintro.html) module. The Arduino sketches can be modified to add or change hardware control functionalities. Refer to the comments within each sketch for guidance on customization. The current usage is outlined below.
 
  After initializing a serial connection with the arduino (see example assay or pySerial documentation to accomplish this) commands can be sent in the following format:
 
--```GET LED_[WAVELENGTH]_STATUS;``` where wavelength is 460, 535, 590, 670, or TRANS.  e.g. GET LED_460_STATUS; will return a 0 (LED is on) or a 1 (LED is off).
--```SET LED_[WAVELENGTH]_STATUS [desired numerical status];``` Where wavelength is 460, 535, 590, 670, or TRANS. And 'desired numerical statis is either 0 (turn on LED) or 1 (turn off LED  e.g. SET LED_460_STATUS 0; will turn on the 460nm LED.
--```GET_AND_SET LED_[WAVELENGTH]_STATUS [desired numerical status];``` Where wavelength is 460, 535, 590, 670, or TRANS. And 'desired numerical statis is either 0 (turn on LED) or 1 (turn off LED  e.g. GET_AND_SET LED_460_STATUS 1;``` Will attempt to turn off the 460 LED and then check the LED status and return the current status.  This is helpful to be sure the SET command changed the LED status.
+- ```GET LED_[WAVELENGTH]_STATUS;``` where wavelength is 460, 535, 590, 670, or TRANS.  e.g. GET LED_460_STATUS; will return a 0 (LED is on) or a 1 (LED is off).
+- ```SET LED_[WAVELENGTH]_STATUS [desired numerical status];``` Where wavelength is 460, 535, 590, 670, or TRANS. And 'desired numerical status is either 0 (turn on LED) or 1 (turn off LED  e.g. SET LED_460_STATUS 0; will turn on the 460nm LED.
+- ```GET_AND_SET LED_[WAVELENGTH]_STATUS [desired numerical status];``` Where wavelength is 460, 535, 590, 670, or TRANS. And 'desired numerical status is either 0 (turn on LED) or 1 (turn off LED  e.g. GET_AND_SET LED_460_STATUS 1;``` Will attempt to turn off the 460 LED and then check the LED status and return the current status.  This is helpful to be sure the SET command changed the LED status.
 
 ##### Barcode Reading
 
--``` bcode_read()```: Invoke this function to read barcodes using a USB handheld scanner. It prompts for a barcode scan and returns the scanned code.
+- ``` bcode_read()```: Invoke this function to read barcodes using a USB handheld scanner. It prompts for a barcode scan and returns the scanned code.
 
 ##### Camera control
 ###### Several of these functions are part of the Spinnaker SDK and we direct you to the SDK documentation for more information.  They are provided here because these are the minimum functions required to interface with the camera.  For example usage see the provded 'test_assay.'
