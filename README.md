@@ -85,7 +85,7 @@ Components
 - ```set_expos_mode(cam, mode="once")```: Sets the automatic exposure mode of the camera.  Mode should be once, continuous, or off.
 - ```set_expos_time(cam, time)```: Sets a custom exposure time.  Expects values in micro seconds.
 - ```get_auto_exposure(cam)```: Returns the current autoexposure value determined by the camera in micro seconds.
-- ```set_framerate(cam, frame_rate=None)```: sets the framerate set on the camera. 'frame_rate' should be in hz.
+- ```set_framerate(cam, frame_rate=None)```: sets the framerate set on the camera. `frame_rate` should be in hz.
 - ```get_framerate(cam)```: Returns the current framerate on the camera.
 
 ##### Video Saving
