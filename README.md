@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository contains the firmware and software necessary to aquire data with the Arcadia Phenotype-o-mat.
+This repository contains the firmware and software necessary to aquire data with the Arcadia Phenotype-o-mat. The protocol for building the phenotype-o-mat is available [here](https://www.protocols.io/view/building-a-phenotype-o-mat-a-low-cost-diy-plate-re-yxmvm3r3ol3p/v1)
 
 ## Installation and Setup
 
@@ -21,7 +21,7 @@ Note, you must also install the Spinnaker python wheel appropriate for your vers
 
 The Phenotype-o-mat system is an integrated solution for controlling experimental hardware and acquiring data, particularly designed for use with Blackfly cameras and Arduino-based control systems. This repository includes Arduino sketches for serial communication, a TOML configuration file for system settings, and Python modules for camera control and initialization.
 
-##Components
+## Components
 ### Arduino Sketches
 
 - [serial_io.ino](./firmware_src/arduino_src/serial_io.ino): Implements basic serial I/O operations for Arduino, facilitating communication between the Arduino and a connected computer.
@@ -48,6 +48,8 @@ The Phenotype-o-mat system is an integrated solution for controlling experimenta
 
 ### Physical components
 All 3d printable physical components of the phenotype-o-mat are available [here](https://www.shapeways.com/designer/ben_arcadia/lists/phenotype-o-mat)
+The printed circuit board can be ordered from [here](https://oshpark.com/shared_projects/38DzJZmF)
+All design files are in this repository in the [design_files/](design_files/) folder.
 
 ### Usage
 #### Data Acquisition
