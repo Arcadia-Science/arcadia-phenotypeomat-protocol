@@ -2,21 +2,26 @@ from pathlib import Path
 
 import numpy as np
 import skimage as ski
-from scipy.ndimage import distance_transform_edt
 
 
 class PlateSegmenter:
-    """Summary.
+    """Class for segmenting colonies growing in a Petri dish imaged by the Phenotype-o-mat.
 
-    More in depth explanation.
+    This class builds off of the script:
+    https://github.com/Arcadia-Science/2024-phenotypeomat/blob/main/data_analysis_scripts/colony_segment_figure_chr_fl_fig.py
+    developed for the [phenotype-o-mat pub](https://doi.org/10.57844/arcadia-112f-5023).
 
     TODO: add support for AVI
+        Just take first frame, but need AVI files to test on.
     TODO: accept plate radius in mm (or cm?).
         Would first need to somehow know magnification or pixelsize of image.
+    TODO: add watershed segmentation if needed.
+        Crude implementation in commit history: bb3861f
 
     Attributes:
         filename:
-            Filepath to phenotype-o-mat plate image. Accepted file types include anything
+            Filepath to 8 bit grayscale phenotype-o-mat plate image. Accepted file types include
+            anything accepted by `ski.io.imread`.
         plate_radius_px:
             Radius of plate in pixels. Default value of 525 was empirically determined from a
             handful of test images.
@@ -27,26 +32,20 @@ class PlateSegmenter:
     def __init__(
         self,
         filename: Path,
-        apply_watershed: bool = True,
         plate_radius_px: int = 525,
         plate_radius_padding_px: int = 70,
-        footprint_size: int = 10,
         min_colony_size_px2: int = 64,
-        max_colony_size_px2: int = 1000,
-        min_colony_eccentricity: float = 0.7,
         sigma_low: float = 1.6,
         sigma_high: float = 32,
+        otsu_fudge_factor: float = -0.05,
     ) -> None:
         self.filename = filename
-        self.apply_watershed = apply_watershed
         self.plate_radius_px = plate_radius_px
         self.plate_radius_padding_px = plate_radius_padding_px
-        self.footprint_size = footprint_size
         self.min_colony_size_px2 = min_colony_size_px2
-        self.max_colony_size_px2 = max_colony_size_px2
-        self.min_colony_eccentricity = min_colony_eccentricity
         self.sigma_low = sigma_low
         self.sigma_high = sigma_high
+        self.otsu_fudge_factor = otsu_fudge_factor
 
     def load_image(self) -> np.ndarray:
         image = ski.io.imread(self.filename)
@@ -71,6 +70,7 @@ class PlateSegmenter:
             raw_8bit_grayscale_plate_image, self.sigma_low, self.sigma_high
         )
         threshold = ski.filters.threshold_otsu(plate_image_dog_filtered)
+        threshold *= 1 + self.otsu_fudge_factor
         plate_image_segmented_rough = plate_image_dog_filtered < threshold
 
         # set pixel intensity outside the detected plate (+ optional padding) to 0
@@ -81,17 +81,14 @@ class PlateSegmenter:
             radius_px=radius_for_mask_px,
         )
 
-        # # optionally apply watershedding to separate overlapping colonies
-        # if self.apply_watershed:
-        #     plate_image_watershed_segmentation, peaks = watershed_segmentation(
-        #         plate_image_segmented_masked, footprint_size=self.footprint_size
-        #     )
-        #     return plate_image_watershed_segmentation, peaks
-        # else:
-        #     plate_image_segmentation = ski.measure.label(plate_image_segmented_masked)
-        #     return plate_image_segmentation
+        # remove small objects via a morphological opening
+        footprint_size = round(np.sqrt(self.min_colony_size_px2))
+        footprint = ski.morphology.disk(footprint_size)
+        plate_image_segmented_opened = ski.morphology.opening(
+            plate_image_segmented_masked, footprint=footprint
+        )
 
-        plate_image_segmentation = ski.measure.label(plate_image_segmented_masked)
+        plate_image_segmentation = ski.measure.label(plate_image_segmented_opened)
         return plate_image_segmentation
 
 
@@ -128,25 +125,3 @@ def apply_circular_mask(
     image_masked = np.zeros_like(image)
     image_masked[circular_mask] = image[circular_mask]
     return image_masked
-
-
-# def watershed_segmentation(binary_image, footprint_size=3):
-#     """"""
-#     distance_transform_image = distance_transform_edt(binary_image)
-#     footprint = np.ones((footprint_size, footprint_size))
-#     peaks = ski.feature.peak_local_max(
-#         distance_transform_image,
-#         footprint=footprint,
-#         labels=binary_image,
-#     )
-#     mask = np.zeros_like(distance_transform_image, dtype=bool)
-#     # seed the watershed with peak coordinates
-#     mask[tuple(peaks.T)] = True
-#     markers = ski.measure.label(mask)
-#     watershed_segmentation_image = ski.segmentation.watershed(
-#         image=-distance_transform_image, markers=markers, mask=binary_image
-#     )
-#     return watershed_segmentation_image, peaks
-
-
-# def 
