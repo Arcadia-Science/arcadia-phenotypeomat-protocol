@@ -16,6 +16,11 @@ conda activate phenotypeomat
 This code also requires the Spinnaker SDK from Flir/Teledyne. The SDK and installation instructure are available [here](https://www.flir.com/products/spinnaker-sdk/?vertical=machine+vision&segment=iis).
 Note, you must also install the Spinnaker python wheel appropriate for your version of Python and Spinnaker. These are also available through the link above.
 
+To run the analysis apps, you must install additional dependencies.
+```{bash}
+conda env update -f apps_dependencies.yml
+```
+
 ## Overview
 ### Phenotype-o-mat Control and Data Acquisition System
 
