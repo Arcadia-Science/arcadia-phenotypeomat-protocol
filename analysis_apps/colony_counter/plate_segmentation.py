@@ -5,7 +5,7 @@ import skimage as ski
 
 
 class PlateSegmenter:
-    """Class for segmenting colonies growing in a Petri dish imaged by the Phenotype-o-mat.
+    """Class for segmenting colonies growing in a Petri dish imaged by the phenotype-o-mat.
 
     This class builds off of the script:
     https://github.com/Arcadia-Science/2024-phenotypeomat/blob/main/data_analysis_scripts/colony_segment_figure_chr_fl_fig.py
@@ -27,6 +27,20 @@ class PlateSegmenter:
             handful of test images.
         plate_radius_padding_px:
             Pad
+        min_colony_size_px2:
+            Minimum area (in square pixels) of a colony. Colonies smaller than this threshold will
+            be removed.
+        low_sigma:
+            The standard deviation for the lower Gaussian kernel when applying the difference of
+            Gaussians band-pass filter.
+        high_sigma:
+            The standard deviation for the higher Gaussian kernel when applying the difference of
+            Gaussians band-pass filter.
+        otsu_fudge_factor:
+            Fudge factor for applying Otsu thresholding. Threshold is changed by
+                threshold *= 1 + otsu_fudge_factor
+            such that negative values result in more generous thresholding (more colonies), while
+            positive values result in more stringent thresholding (less colonies).
     """
 
     def __init__(
@@ -35,19 +49,20 @@ class PlateSegmenter:
         plate_radius_px: int = 525,
         plate_radius_padding_px: int = 70,
         min_colony_size_px2: int = 64,
-        sigma_low: float = 1.6,
-        sigma_high: float = 32,
-        otsu_fudge_factor: float = -0.05,
+        low_sigma: float = 1.6,
+        high_sigma: float = 32,
+        otsu_fudge_factor: float = -0.1,
     ) -> None:
         self.filename = filename
         self.plate_radius_px = plate_radius_px
         self.plate_radius_padding_px = plate_radius_padding_px
         self.min_colony_size_px2 = min_colony_size_px2
-        self.sigma_low = sigma_low
-        self.sigma_high = sigma_high
+        self.low_sigma = low_sigma
+        self.high_sigma = high_sigma
         self.otsu_fudge_factor = otsu_fudge_factor
 
     def load_image(self) -> np.ndarray:
+        """Load image from filepath."""
         image = ski.io.imread(self.filename)
         # convert RGB image to grayscale
         if image.ndim > 2:
@@ -56,7 +71,7 @@ class PlateSegmenter:
             return image
 
     def segment(self) -> np.ndarray:
-        """"""
+        """Segment colonies from a Petri dish."""
         raw_8bit_grayscale_plate_image = self.load_image()
 
         # detect plate
@@ -67,7 +82,7 @@ class PlateSegmenter:
         # apply difference of Gaussians filter to remove background artifacts
         # prior to thresholding
         plate_image_dog_filtered = ski.filters.difference_of_gaussians(
-            raw_8bit_grayscale_plate_image, self.sigma_low, self.sigma_high
+            raw_8bit_grayscale_plate_image, self.low_sigma, self.high_sigma
         )
         threshold = ski.filters.threshold_otsu(plate_image_dog_filtered)
         threshold *= 1 + self.otsu_fudge_factor
@@ -93,7 +108,7 @@ class PlateSegmenter:
 
 
 def detect_circle(image: np.ndarray, radius_px: int) -> tuple[tuple[int, int], int]:
-    """"""
+    """Detect a circle from an image."""
     # edge detection
     edges = ski.filters.sobel(image)
     threshold = ski.filters.threshold_otsu(edges)
@@ -118,7 +133,7 @@ def apply_circular_mask(
     center: tuple[int, int],
     radius_px: int,
 ):
-    """"""
+    """Clear image content outside the defined circular region."""
     Y, X = np.ogrid[: image.shape[0], : image.shape[1]]
     distance_from_center = np.sqrt((X - center[0]) ** 2 + (Y - center[1]) ** 2)
     circular_mask = distance_from_center <= radius_px
