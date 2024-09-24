@@ -6,10 +6,12 @@ This repository contains the firmware and software necessary to aquire data with
 
 ## Installation and Setup
 
-This repository uses conda to manage software environments and installations. You can find operating system-specific instructions for installing miniconda [here](https://docs.conda.io/projects/miniconda/en/latest/). After installing conda and [mamba](https://mamba.readthedocs.io/en/latest/), run the following command to create the pipeline run environment.
+This repository uses conda to manage software environments and installations. You can find operating system-specific instructions for installing miniconda [here](https://docs.conda.io/projects/miniconda/en/latest/). After installing conda, navigate to the directory in which you would like to clone the repository, and run the following commands to create the pipeline run environment.
 
 ```{bash}
-mamba env create -n phenotypeomat --file phenotypeomat.yml
+git clone https://github.com/Arcadia-Science/arcadia-phenotypeomat-protocol.git
+cd arcadia-phenotypeomat-protocol
+conda env create -n phenotypeomat --file phenotypeomat.yml
 conda activate phenotypeomat
 ```
 
